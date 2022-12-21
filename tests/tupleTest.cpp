@@ -22,19 +22,19 @@ SCENARIO("A tuple with w=1.0 is a point")
         auto a = Tuple(4.3, -4.2, 3.1, 1.0);
         THEN("a.x = 4.3")
         {
-            CHECK(Equals(a.x, 4.3));
+            CHECK(floatEquals(a.x, 4.3));
         }
         AND_THEN("a.y = -4.2")
         {
-            CHECK(Equals(a.y, -4.2));
+            CHECK(floatEquals(a.y, -4.2));
         }
         AND_THEN("a.z = 3.1")
         {
-            CHECK(Equals(a.z, 3.1));
+            CHECK(floatEquals(a.z, 3.1));
         }
         AND_THEN("a.w = 1.0")
         {
-            CHECK(Equals(a.w, 1.0));
+            CHECK(floatEquals(a.w, 1.0));
         }
         AND_THEN("a is a point")
         {
@@ -65,19 +65,19 @@ SCENARIO("A tuple with w=0 is a vector")
         auto a = Tuple(4.3, -4.2, 3.1, 0.0);
         THEN("a.x = 4.3")
         {
-            CHECK(Equals(a.x, 4.3));
+            CHECK(floatEquals(a.x, 4.3));
         }
         AND_THEN("a.y = -4.2")
         {
-            CHECK(Equals(a.y,-4.2));
+            CHECK(floatEquals(a.y, -4.2));
         }
         AND_THEN("a.z = 3.1")
         {
-            CHECK(Equals(a.z, 3.1));
+            CHECK(floatEquals(a.z, 3.1));
         }
         AND_THEN("a.w = 0.0")
         {
-            CHECK(Equals(a.w, 0.0));
+            CHECK(floatEquals(a.w, 0.0));
         }
         AND_THEN("a is not a point")
         {

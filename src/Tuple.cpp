@@ -47,7 +47,7 @@ Tuple Vector(float x, float y, float z) //w = 0
     Tuple v = Tuple(x,y,z,0.0);
     return v;
 }
-bool Equals(float a, float b)
+bool floatEquals(float a, float b)
 {
     //check if two floats are functionally equivalent by comparing against round off constant
     if ((a-b) < EPSILON)
