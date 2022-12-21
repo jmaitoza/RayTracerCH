@@ -3,4 +3,4 @@ project(RayTracerCH)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(RayTracerCH main.cpp)
+add_executable(RayTracerCH tests/tupleTest.cpp tests/doctestMain.cpp include/Tuple.h src/Tuple.cpp)
