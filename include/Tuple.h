@@ -20,6 +20,9 @@ public:
     friend bool operator==(const Tuple &t1, const Tuple &t2);
     friend Tuple operator+(const Tuple& t1, const Tuple& t2);
     friend Tuple operator-(const Tuple& t1, const Tuple& t2);
+    friend Tuple operator-(const Tuple& t1); // negation of singular tuple
+    friend Tuple operator*(const Tuple& t1, float scalar);
+    friend Tuple operator/(const Tuple& t1, float scalar);
 
 };
 

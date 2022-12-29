@@ -63,6 +63,19 @@ Tuple operator-(const Tuple &t1, const Tuple &t2) {
     return t3;
 }
 
+Tuple operator-(const Tuple &t1) {
+   return {-t1.x, -t1.y, -t1.z, -t1.w};
+}
+
+Tuple operator*(const Tuple &t1, float scalar) {
+   return {t1.x*scalar, t1.y*scalar, t1.z*scalar, t1.w*scalar};
+}
+
+Tuple operator/(const Tuple &t1, float scalar)
+{
+    return {t1.x/scalar, t1.y/scalar, t1.z/scalar, t1.w/scalar};
+}
+
 Tuple Point(float x, float y, float z) //w = 1
 {
     Tuple p = Tuple(x,y,z,1.0);
@@ -82,12 +95,3 @@ bool floatEquals(float a, float b)
         return false;
 }
 
-// see if i can simplify this better
-//bool tupEquals(Tuple t1, Tuple t2)
-//{
-//    //compare if two tuple objects are equal
-//    if (floatEquals(t1.x, t2.x) && floatEquals(t1.y, t2.y) && floatEquals(t1.z, t2.z) && floatEquals(t1.w, t2.w))
-//        return true;
-//    else
-//        return false;
-//}

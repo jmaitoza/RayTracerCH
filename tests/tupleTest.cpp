@@ -201,3 +201,79 @@ SCENARIO("Subtracting two vectors")
     }
 }
 
+SCENARIO("Subtracting a vector from the zero vector")
+{
+    GIVEN("Subtracting a vector from the zero vector")
+    {
+        auto zero = Vector(0, 0, 0);
+        auto v = Vector(1, -2, 3);
+
+        auto result = zero - v;
+
+        THEN("result = vector(-1, 2, -3)")
+        {
+            CHECK(result == Vector(-1, 2, -3));
+        }
+    }
+}
+
+SCENARIO("Negating a tuple")
+{
+    GIVEN("Negating a tuple")
+    {
+        auto a = Tuple(1, -2, 3, -4);
+
+        auto result = -a;
+
+        THEN("result = tuple(-1, 2, -3, 4)")
+        {
+            CHECK(result == Tuple(-1, 2, -3, 4));
+        }
+    }
+}
+
+SCENARIO("Multiplying a tuple by a scalar")
+{
+    GIVEN("Multiplying a tuple by a scalar")
+    {
+        auto a = Tuple(1, -2, 3, -4);
+
+        auto result = a * 3.5;
+
+        THEN("result = tuple(3.5, -7, 10.5, -14)")
+        {
+            CHECK(result == Tuple(3.5, -7, 10.5, -14));
+        }
+    }
+}
+
+SCENARIO("Multiplying a tuple by a fraction")
+{
+    GIVEN("Multiplying a tuple by a fraction")
+    {
+        auto a = Tuple(1, -2, 3, -4);
+
+        auto result = a * 0.5;
+
+        THEN("result = tuple(0.5, -1, 1.5, -2)")
+        {
+            CHECK(result == Tuple(0.5, -1, 1.5, -2));
+        }
+    }
+}
+
+SCENARIO("Dividing a tuple by a scalar")
+{
+    GIVEN("Dividing a tuple by a scalar")
+    {
+        auto a = Tuple(1, -2, 3, -4);
+
+        auto result = a / 2;
+
+        THEN("result = tuple(0.5, -1, 1.5, -2)")
+        {
+            CHECK(result == Tuple(0.5, -1, 1.5, -2));
+        }
+    }
+}
+
