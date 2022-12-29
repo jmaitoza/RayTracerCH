@@ -277,3 +277,64 @@ SCENARIO("Dividing a tuple by a scalar")
     }
 }
 
+SCENARIO("Computing the magnitude of vector(1, 0, 0)")
+{
+    GIVEN("Computing the magnitude of vector(1, 0, 0)")
+    {
+        auto v = Vector(1, 0, 0);
+
+        auto result = Magnitude(v);
+
+        THEN("result = 1")
+        {
+            CHECK(result == 1);
+        }
+    }
+}
+
+SCENARIO("Computing the magnitude of vector(0, 1, 0)")
+{
+    GIVEN("Computing the magnitude of vector(0, 1, 0)")
+    {
+        auto v = Vector(0, 1, 0);
+
+        auto result = Magnitude(v);
+
+        THEN("result = 1")
+        {
+            CHECK(result == 1);
+        }
+    }
+}
+
+SCENARIO("Computing the magnitude of vector(0, 0, 1)")
+{
+    GIVEN("Computing the magnitude of vector(0, 0, 1)")
+    {
+        auto v = Vector(0, 0, 1);
+
+        auto result = Magnitude(v);
+
+        THEN("result = 1")
+        {
+            CHECK(result == 1);
+        }
+    }
+}
+
+SCENARIO("Computing the magnitude of vector(1, 2, 3)")
+{
+    GIVEN("Computing the magnitude of vector(1, 2, 3)")
+    {
+        auto v = Vector(1, 2, 3);
+
+        auto result = Magnitude(v);
+
+        THEN("result = sqrt(14)")
+        {
+//            CHECK(result == sqrt(14));
+            CHECK(floatEquals(result, sqrt(14)));
+        }
+    }
+}
+

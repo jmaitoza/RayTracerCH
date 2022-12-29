@@ -29,5 +29,6 @@ public:
 Tuple Point(float x, float y, float z);
 Tuple Vector(float x, float y, float z);
 bool floatEquals(float a, float b);
+float Magnitude(const Tuple& t1);
 
 #endif //RAYTRACERCH_TUPLE_H

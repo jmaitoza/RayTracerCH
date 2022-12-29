@@ -95,3 +95,10 @@ bool floatEquals(float a, float b)
         return false;
 }
 
+float Magnitude(const Tuple &t1)
+{
+    // use pythagorius theorem to find magnitude of a vector
+    float m = sqrtf((t1.x*t1.x) + (t1.y*t1.y) + (t1.z*t1.z) + (t1.w*t1.w));
+    return m;
+}
+
