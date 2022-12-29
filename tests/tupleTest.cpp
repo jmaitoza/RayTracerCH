@@ -137,3 +137,67 @@ SCENARIO("vector() creates tuples with w=0")
     }
 }
 
+SCENARIO("Adding two tuples")
+{
+    GIVEN("Adding two tuples")
+    {
+        auto a1 = Tuple(3, -2, 5, 1);
+        auto a2 = Tuple(-2, 3, 1, 0);
+
+        auto result = a1 + a2;
+
+        THEN("result = tuple(1, 1, 6, 1)")
+        {
+            CHECK(result == Tuple(1, 1, 6, 1));
+        }
+    }
+}
+
+SCENARIO("Subtracting two points")
+{
+    GIVEN("Subtracting two points")
+    {
+        auto p1 = Point(3, 2, 1);
+        auto p2 = Point(5, 6, 7);
+
+        auto result = p1 - p2;
+
+        THEN("result = vector(-2, -4, -6)")
+        {
+            CHECK(result == Vector(-2, -4, -6));
+        }
+    }
+}
+
+SCENARIO("Subtracting a vector from a point")
+{
+    GIVEN("Subtracting a vector from a point")
+    {
+        auto p = Point(3, 2, 1);
+        auto v = Vector(5, 6, 7);
+
+        auto result = p - v;
+
+        THEN("result = point(-2, -4, -6)")
+        {
+            CHECK(result == Point(-2, -4, -6));
+        }
+    }
+}
+
+SCENARIO("Subtracting two vectors")
+{
+    GIVEN("Subtracting two vectors")
+    {
+        auto v1 = Vector(3, 2, 1);
+        auto v2 = Vector(5, 6, 7);
+
+        auto result = v1 - v2;
+
+        THEN("result = vector(-2, -4, -6)")
+        {
+            CHECK(result == Vector(-2, -4, -6));
+        }
+    }
+}
+

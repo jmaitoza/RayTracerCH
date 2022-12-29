@@ -16,6 +16,10 @@ public:
     bool isPoint() const; //w = 1
     bool isVector() const; //w = 0
 
+    //use friend function for standard tuple arithmetic operations
+    friend bool operator==(const Tuple &t1, const Tuple &t2);
+    friend Tuple operator+(const Tuple& t1, const Tuple& t2);
+    friend Tuple operator-(const Tuple& t1, const Tuple& t2);
 
 };
 
