@@ -22,19 +22,19 @@ SCENARIO("A tuple with w=1.0 is a point")
         auto a = Tuple(4.3, -4.2, 3.1, 1.0);
         THEN("a.x = 4.3")
         {
-            CHECK(floatEquals(a.x, 4.3));
+            CHECK(Equals(a.x, 4.3));
         }
         AND_THEN("a.y = -4.2")
         {
-            CHECK(floatEquals(a.y, -4.2));
+            CHECK(Equals(a.y, -4.2));
         }
         AND_THEN("a.z = 3.1")
         {
-            CHECK(floatEquals(a.z, 3.1));
+            CHECK(Equals(a.z, 3.1));
         }
         AND_THEN("a.w = 1.0")
         {
-            CHECK(floatEquals(a.w, 1.0));
+            CHECK(Equals(a.w, 1.0));
         }
         AND_THEN("a is a point")
         {
@@ -65,19 +65,19 @@ SCENARIO("A tuple with w=0 is a vector")
         auto a = Tuple(4.3, -4.2, 3.1, 0.0);
         THEN("a.x = 4.3")
         {
-            CHECK(floatEquals(a.x, 4.3));
+            CHECK(Equals(a.x, 4.3));
         }
         AND_THEN("a.y = -4.2")
         {
-            CHECK(floatEquals(a.y, -4.2));
+            CHECK(Equals(a.y, -4.2));
         }
         AND_THEN("a.z = 3.1")
         {
-            CHECK(floatEquals(a.z, 3.1));
+            CHECK(Equals(a.z, 3.1));
         }
         AND_THEN("a.w = 0.0")
         {
-            CHECK(floatEquals(a.w, 0.0));
+            CHECK(Equals(a.w, 0.0));
         }
         AND_THEN("a is not a point")
         {
@@ -333,8 +333,109 @@ SCENARIO("Computing the magnitude of vector(1, 2, 3)")
         THEN("result = sqrt(14)")
         {
 //            CHECK(result == sqrt(14));
-            CHECK(floatEquals(result, sqrt(14)));
+            CHECK(Equals(result, sqrt(14)));
         }
     }
 }
 
+//Scenario: Normalizing vector(4, 0, 0) gives (1, 0, 0)
+//Given v ← vector(4, 0, 0)
+//Then normalize(v) = vector(1, 0, 0)
+//
+//Scenario: The magnitude of a normalized vector
+//Given v ← vector(1, 2, 3)
+//When norm ← normalize(v)
+//Then magnitude(norm) = 1
+
+SCENARIO("Normalizing vector(4, 0, 0) gives (1, 0, 0)")
+{
+    GIVEN("Normalizing vector(4, 0, 0) gives (1, 0, 0)")
+    {
+        auto v = Vector(4, 0, 0);
+
+        auto result = Normalize(v);
+
+        THEN("normalize(v) = vector(1, 0, 0)")
+        {
+            CHECK(result == Vector(1, 0, 0));
+        }
+    }
+}
+
+SCENARIO("Normalizing vector(1, 2, 3)")
+{
+    GIVEN("Normalizing vector(1, 2, 3)")
+    {
+        auto v = Vector(1, 2, 3);
+
+        WHEN("norm = normalize(v)")
+        {
+            auto norm = Normalize(v);
+            auto result = Magnitude(norm);
+            THEN("Magnitude(norm) = 1")
+            {
+                CHECK(Equals(result, 1));
+            }
+        }
+
+
+    }
+}
+
+SCENARIO("The magnitude of a normalized vector")
+{
+    GIVEN("The magnitude of a normalized vector")
+    {
+        auto v = Vector(1, 2, 3);
+
+        auto norm = Normalize(v);
+
+        auto result = Magnitude(norm);
+
+        THEN("magnitude(norm) = 1")
+        {
+            CHECK(Equals(result, 1));
+        }
+    }
+}
+
+SCENARIO("The dot product of two tuples")
+{
+    GIVEN("a = vector(1, 2, 3) AND b = vector(2, 3, 4)")
+    {
+        auto a = Vector(1, 2, 3);
+        auto b = Vector(2, 3, 4);
+
+        auto result = Dot(a, b);
+
+        THEN("Dot(a, b) = 20")
+        {
+            CHECK(Equals(result, 20));
+        }
+    }
+
+}
+
+SCENARIO("the cross product of two vectors")
+{
+    GIVEN("a = vector(1, 2, 3) AND b = vector (2, 3, 4)")
+    {
+        auto a = Vector(1, 2, 3);
+        auto b = Vector(2, 3, 4);
+        REQUIRE(a.isVector());
+        REQUIRE(b.isVector());
+
+        auto result_ab = Cross(a, b);
+        auto result_ba = Cross(b, a);
+
+        THEN("Cross(a, b) = vector(-1, 2, -1)")
+        {
+            CHECK(result_ab == Vector(-1, 2, -1));
+        }
+
+        AND_THEN("Cross(b, a) = vector(1, -2, 1)")
+        {
+            CHECK(result_ba == Vector(1, -2, 1));
+        }
+    }
+}

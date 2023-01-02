@@ -3,6 +3,7 @@
 //
 #include "../include/Tuple.h"
 #include <cmath>
+#include <cassert> // assert preprocessor macro
 
 
 //Tuple Constructor -- default
@@ -38,7 +39,7 @@ bool Tuple::isVector() const {
 }
 
 bool operator==(const Tuple &t1, const Tuple &t2) {
-    if(floatEquals(t1.x, t2.x) && floatEquals(t1.y, t2.y) && floatEquals(t1.z, t2.z) && floatEquals(t1.w, t2.w))
+    if(Equals(t1.x, t2.x) && Equals(t1.y, t2.y) && Equals(t1.z, t2.z) && Equals(t1.w, t2.w))
         return true;
     else
         return false;
@@ -86,7 +87,7 @@ Tuple Vector(float x, float y, float z) //w = 0
     Tuple v = Tuple(x,y,z,0.0);
     return v;
 }
-bool floatEquals(float a, float b)
+bool Equals(float a, float b)
 {
     //check if two floats are functionally equivalent by comparing against round off constant
     if ((a-b) < EPSILON)
@@ -95,10 +96,36 @@ bool floatEquals(float a, float b)
         return false;
 }
 
-float Magnitude(const Tuple &t1)
+float Magnitude(const Tuple &v1)
 {
     // use pythagorius theorem to find magnitude of a vector
-    float m = sqrtf((t1.x*t1.x) + (t1.y*t1.y) + (t1.z*t1.z) + (t1.w*t1.w));
+    float m = sqrtf((v1.x * v1.x) + (v1.y * v1.y) + (v1.z * v1.z) + (v1.w * v1.w));
     return m;
+}
+
+Tuple Normalize(const Tuple &v1)
+{
+    return Tuple(v1.x/ Magnitude(v1),
+                 v1.y/ Magnitude(v1),
+                 v1.z/ Magnitude(v1),
+                 v1.w/ Magnitude(v1));
+}
+
+float Dot(const Tuple &v1, const Tuple &v2)
+{
+    return (v1.x * v2.x) +
+           (v1.y * v2.y) +
+           (v1.z * v2.z) +
+           (v1.w * v2.w);
+
+}
+
+Tuple Cross(const Tuple &v1, const Tuple &v2)
+{
+    assert(v1.isVector() && v2.isVector());
+    return Vector((v1.y *v2.z)-(v1.z * v2.y),
+                  (v1.z *v2.x)-(v1.x * v2.z),
+                  (v1.x *v2.y)-(v1.y * v2.x));
+
 }
 

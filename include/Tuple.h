@@ -28,7 +28,10 @@ public:
 
 Tuple Point(float x, float y, float z);
 Tuple Vector(float x, float y, float z);
-bool floatEquals(float a, float b);
-float Magnitude(const Tuple& t1);
+bool Equals(float a, float b);
+float Magnitude(const Tuple& v1); // always a vector
+Tuple Normalize(const Tuple& v1);
+float Dot(const Tuple& v1, const Tuple& v2);
+Tuple Cross(const Tuple& v1, const Tuple& v2);
 
 #endif //RAYTRACERCH_TUPLE_H
