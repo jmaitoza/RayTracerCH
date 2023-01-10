@@ -129,3 +129,7 @@ Tuple Cross(const Tuple &v1, const Tuple &v2)
 
 }
 
+void printTuple(const Tuple &t1) {
+    std::cout << "(" << t1.x << ", " << t1.y << ", " << t1.z << ", " << t1.w << ")";
+}
+
