@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     if(ctx.shouldExit())              // query flags (and --exit) rely on this
         return res;                   // propagate the result of the tests
     // your actual program execution goes here - only if we haven't exited
-    Tick();
+//    Tick();
 
     return res; // + your_program_res
 }

@@ -439,3 +439,96 @@ SCENARIO("the cross product of two vectors")
         }
     }
 }
+
+//Scenario: Colors are (red, green, blue) tuples
+//        Given c ← color(-0.5, 0.4, 1.7)
+//Then c.red = -0.5
+//And c.green = 0.4
+//And c.blue = 1.7
+
+SCENARIO("Colors are (red, green, blue) tuples")
+{
+    GIVEN("c = Color(-0.5, 0.4, 1.7)")
+    {
+        auto c = Tuple::Color(-0.5, 0.4, 1.7);
+
+        THEN("c.red = -0.5")
+        {
+            CHECK(Equals(c.red, -0.5));
+        }
+
+        AND_THEN("c.green = 0.4")
+        {
+            CHECK(Equals(c.green, 0.4));
+        }
+
+        AND_THEN("c.blue = 1.7")
+        {
+            CHECK(Equals(c.blue, 1.7));
+        }
+    }
+}
+
+SCENARIO("Adding colors")
+{
+    GIVEN("c1 = Color(0.9, 0.6, 0.75")
+    {
+        auto c1 = Tuple::Color(0.9, 0.6, 0.75);
+        AND_WHEN("c2 = Color(0.7, 0.1, 0.25)")
+        {
+           auto c2 = Tuple::Color(0.7, 0.1, 0.25);
+              auto result = c1 + c2;
+              THEN("result = Color(1.6, 0.7, 1.0)")
+              {
+                CHECK(result == Tuple::Color(1.6, 0.7, 1.0));
+              }
+        }
+    }
+}
+
+SCENARIO("Subtracting colors")
+{
+    GIVEN("c1 = Color(0.9, 0.6, 0.75")
+    {
+        auto c1 = Tuple::Color(0.9, 0.6, 0.75);
+        AND_WHEN("c2 = Color(0.7, 0.1, 0.25)")
+        {
+           auto c2 = Tuple::Color(0.7, 0.1, 0.25);
+              auto result = c1 - c2;
+              THEN("result = Color(0.2, 0.5, 0.5)")
+              {
+                CHECK(result == Tuple::Color(0.2, 0.5, 0.5));
+              }
+        }
+    }
+}
+
+SCENARIO("Multiplying a color by a scalar")
+{
+    GIVEN("c = Color(0.2, 0.3, 0.4)")
+    {
+        auto c = Tuple::Color(0.2, 0.3, 0.4);
+        THEN("c*2 = Color(0.4, 0.6, 0.8)")
+        {
+            auto result = c*2;
+            CHECK(result == Tuple::Color(0.4, 0.6, 0.8));
+        }
+    }
+}
+
+SCENARIO("Multiplying Colors")
+{
+    GIVEN("c1 = Color(1, 0.2, 0.4)")
+    {
+        auto c1 = Tuple::Color(1, 0.2, 0.4);
+        AND_WHEN("c2 = Color(0.9, 1, 0.1)")
+        {
+           auto c2 = Tuple::Color(0.9, 1, 0.1);
+           auto result = HadamardProduct(c1, c2);
+              THEN("result = Color(0.9, 0.2, 0.04)")
+              {
+                CHECK(result == Tuple::Color(0.9, 0.2, 0.04));
+              }
+        }
+    }
+}

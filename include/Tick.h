@@ -42,10 +42,10 @@ int Tick()
 //    velocity is normalized to 1 unit/tick
     struct Projectile p = {Point(0, 1, 0), Normalize(Vector(1, 1, 0))};
     //modify initial velocity here
-//    p.velocity = p.velocity*2.5;
+    p.velocity = p.velocity*69.0;
 
     // gravity -0.1 unit/tick, and wind is -0.01 unit/tick
-    struct Environment e = {Vector(0, -0.1, 0), Vector(-0.01, 0, 0)};
+    struct Environment e = {Vector(0, -3000.1, 0), Vector(-12.01, 0, 0)};
 
     int count = 0;
     std::cout<< "starting pos: ";
@@ -55,9 +55,9 @@ int Tick()
     {
         p = tick(e,p);
         count++;
-//        std::cout << "position: ";
-//        printTuple(p.position);
-//        std::cout << std::endl;
+        std::cout << "position: ";
+        printTuple(p.position);
+        std::cout << std::endl;
         std::this_thread::sleep_for(1ms);
     }
     std::cout << "The projectile hit the ground after tick number " << count << std::endl;

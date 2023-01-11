@@ -24,6 +24,17 @@ Tuple::Tuple(float x, float y, float z, float w)
     this->w = w;
 }
 
+// color tuple
+Tuple Tuple::Color(float red, float green, float blue)
+{
+    Tuple c;
+    c.red = red;
+    c.green = green;
+    c.blue = blue;
+    return c;
+}
+
+
 bool Tuple::isPoint() const {
    if (this->w == 1.0)
       return true;
@@ -87,6 +98,16 @@ Tuple Vector(float x, float y, float z) //w = 0
     Tuple v = Tuple(x,y,z,0.0);
     return v;
 }
+//Tuple Color(float x, float y, float z)
+//{
+//    // x coord = red, y coord = green, z coord = blue
+//    float red = x;
+//    float green = y;
+//    float blue = z;
+//
+//    return Tuple(red, green, blue, 0);
+//}
+
 bool Equals(float a, float b)
 {
     //check if two floats are functionally equivalent by comparing against round off constant
@@ -131,5 +152,14 @@ Tuple Cross(const Tuple &v1, const Tuple &v2)
 
 void printTuple(const Tuple &t1) {
     std::cout << "(" << t1.x << ", " << t1.y << ", " << t1.z << ", " << t1.w << ")";
+}
+
+// multiply a color tuple by a color tuple
+Tuple HadamardProduct(const Tuple &c1, const Tuple &c2)
+{
+    float red = c1.red * c2.red;
+    float green = c1.green * c2.green;
+    float blue = c1.blue * c2.blue;
+    return Tuple::Color(red, green, blue);
 }
 
