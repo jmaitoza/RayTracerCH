@@ -3,6 +3,7 @@
 //
 #include "doctest.h"
 #include "../include/Tuple.h"
+#include <cmath>
 
 //gherkin syntax
 //Scenario: A tuple with w=1.0 is a point
